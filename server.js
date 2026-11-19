@@ -3,22 +3,21 @@ import express from 'express';
 const app = express();
 const PORT = 3000;
 
-// Middleware to parse JSON requests and serve static frontend files
 app.use(express.json());
 app.use(express.static('public'));
 
-// In-memory database with id, title, author, and price
+
 let books = [
   { id: 1, title: 'Harry Potter', author: 'J.K. Rowling', price: 499 },
   { id: 2, title: 'Romeo and Juliet', author: 'William Shakespeare', price: 299 }
 ];
 
-// 1. GET /books - Retrieve all books
+
 app.get('/books', (req, res) => {
   res.status(200).json(books);
 });
 
-// 2. GET /books/:id - Retrieve a particular book using its ID
+
 app.get('/books/:id', (req, res) => {
   const bookId = parseInt(req.params.id);
   const book = books.find(b => b.id === bookId);
@@ -30,7 +29,7 @@ app.get('/books/:id', (req, res) => {
   res.status(200).json(book);
 });
 
-// 3. POST /books - Add a new book
+
 app.post('/books', (req, res) => {
   const { title, author, price } = req.body;
 
@@ -54,7 +53,7 @@ app.post('/books', (req, res) => {
   res.status(201).json({ message: 'Book added successfully', book: newBook });
 });
 
-// 4. PUT /books/:id - Update book details
+
 app.put('/books/:id', (req, res) => {
   const bookId = parseInt(req.params.id);
   const book = books.find(b => b.id === bookId);
@@ -78,7 +77,6 @@ app.put('/books/:id', (req, res) => {
   res.status(200).json({ message: 'Book updated successfully', book });
 });
 
-// 5. DELETE /books/:id - Delete a book
 app.delete('/books/:id', (req, res) => {
   const bookId = parseInt(req.params.id);
   const bookIndex = books.findIndex(b => b.id === bookId);
@@ -91,7 +89,6 @@ app.delete('/books/:id', (req, res) => {
   res.status(200).json({ message: 'Book deleted successfully', book: deletedBook[0] });
 });
 
-// Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
