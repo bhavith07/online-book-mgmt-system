@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Management System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Book Management System</h1>
+
+    <!-- Notification Banner -->
+    <div id="message-box" class="message hidden"></div>
+
+    <!-- Add / Update Book Form -->
+    <form id="book-form" class="card">
+      <h2 id="form-title">Add New Book</h2>
+      <input type="hidden" id="book-id">
+      
+      <div class="form-group">
+        <label for="title">Book Title</label>
+        <input type="text" id="title" placeholder="Enter book title" required>
+      </div>
+
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" id="author" placeholder="Enter author name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price (₹)</label>
+        <input type="number" id="price" step="0.01" placeholder="Enter price" required>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" id="submit-btn" class="btn primary">Add Book</button>
+        <button type="button" id="cancel-btn" class="btn secondary hidden">Cancel Edit</button>
+      </div>
+    </form>
+
+    <!-- Book List Table -->
+    <div class="card">
+      <h2>Available Books</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="book-list">
+          <!-- Books load here dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
